@@ -1,0 +1,20 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'store/buynow.css' %}">
+<div class="row">
+  <div class="col-md-6">
+    <img src="{{ product.image.url }}" width="100%">
+  </div>
+
+  <div class="col-md-6">
+    <h2>{{ product.name }}</h2>
+    <h4>₹{{ product.price }}</h4>
+    <p>{{ product.description }}</p>
+
+    <a href="{% url 'add_to_cart' product.id %}" class="btn btn-success">Add to Cart</a>
+    <a href="{% url 'order' %}" class="buy">Buy Now</a>
+  </div>
+</div>
+{% endblock %}

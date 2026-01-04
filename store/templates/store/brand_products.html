@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A</title>
+</head>
+<body>
+
+</body>
+</html>{% extends 'store/base.html' %}
+
+{% block content %}
+<h3 class="mb-4">{{ brand.name }} PRODUCTS </h3>
+
+
+<div class="row">
+  {% for p in products %}
+  <div class="col-md-3">
+    <div class="card mb-4">
+      <img src="{{ p.image.url }}" class="card-img-top" height="180">
+      <div class="card-body text-center">
+        <h6>{{ p.name }}</h6>
+        <p>₹{{ p.price }}</p>
+        <a href="{% url 'add_to_cart' p.id %}" class="btn btn-success btn-sm">
+          Add to Cart
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

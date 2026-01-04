@@ -1,0 +1,68 @@
+{% extends 'store/base.html' %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'store/carousel.css'%}">
+
+<div id="shoeCarousel"
+     class="carousel slide mb-4"
+     data-bs-ride="carousel"
+     data-bs-interval="2000">
+
+  <div class="carousel-inner">
+
+    <div class="carousel-item active">
+      <img src="{% static 'store/images/slider1.jpg' %}" class="d-block w-100" height="150">
+    </div>
+
+    <div class="carousel-item">
+      <img src="{% static 'store/images/slider2.jpg' %}" class="d-block w-100" height="150">
+    </div>
+
+    <div class="carousel-item">
+      <img src="{% static 'store/images/slider3.jpg' %}" class="d-block w-100" height="150">
+    </div>
+
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#shoeCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#shoeCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+
+</div>
+
+
+
+<div class="container">
+  <div class="section-title mb-4">
+    <span class="line"></span>
+    <h3 class="shop-title">SHOP BY BRAND</h3>
+    <span class="line"></span>
+  </div>
+</div>
+
+
+<div class="row">
+  {% for b in brands %}
+  <div class="col-md-4">
+    <div class="card mb-4 shadow">
+      <img src="{{ b.image.url }}" class="card-img-top" height="200">
+      <div class="card-body text-center">
+        <h5 class="br-name">{{ b.name }}</h5>
+        <a href="{% url 'brand_products' b.id %}" class="vw-shoe btn btn-dark">
+          View Shoes
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

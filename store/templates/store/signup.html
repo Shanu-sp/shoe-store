@@ -1,0 +1,11 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<form method="POST">
+  {% csrf_token %}
+  <h1>Signup</h1>
+  <input type="email" name="email" class="form-control mb-3" placeholder="Enter Email" required>
+  <button class="btn btn-dark w-100">Send OTP</button>
+</form>
+
+{% endblock %}
