@@ -1,0 +1,103 @@
+.profile-wrapper {
+    max-width: 720px;
+    margin: 40px auto;
+    padding: 0 15px;
+}
+
+/* Header */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 40px;
+}
+
+.profile-avatar {
+    width: 46px;
+    height: 46px;
+    background: black;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+/* Section title */
+.section-title {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Timeline layout */
+.orders-timeline {
+    position: relative;
+    padding-left: 20px;
+}
+
+.orders-timeline::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e5e5e5;
+}
+
+/* Order item */
+.order-item {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 28px;
+}
+
+.order-dot {
+    position: absolute;
+    left: -3px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    background: black;
+    border-radius: 50%;
+}
+
+.order-content {
+    background: #373636;
+    border-radius: 10px;
+    padding: 14px 16px;
+    color: white;
+}
+
+.order-id {
+    font-weight: 500;
+}
+
+.order-date {
+    font-size: 13px;
+    color: #f7f6f6;
+}
+
+.order-meta {
+    font-size: 14px;
+    color: #eeebeb;
+    margin-top: 4px;
+}
+
+.order-link {
+    font-size: 13px;
+    color: black;
+    text-decoration: none;
+    margin-top: 6px;
+    display: inline-block;
+}
+
+.order-link:hover {
+    text-decoration: underline;
+}
+
+/* Actions */
+.profile-actions {
+    margin-top: 40px;
+}

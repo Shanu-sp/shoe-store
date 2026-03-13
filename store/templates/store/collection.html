@@ -1,0 +1,36 @@
+{% extends 'store/base.html' %} {% block content %}
+<h2 class="collection-title text-uppercase">
+  {{ brand }} {{ category }} Collection
+</h2>
+
+<div class="container my-5">
+  <div class="row g-4">
+    {% for product in products %}
+    <div class="col-md-3">
+      <div class="product-card">
+        <div class="product-imgs">
+          <img
+            src="{{ product.image.url }}"
+            alt="{{ product.name }}"
+            class="img-fluid"
+          />
+        </div>
+
+        <div class="product-body text-center">
+          <h5>{{ product.name }}</h5>
+          <p class="fw-bold">₹{{ product.price }}</p>
+
+          <a href="{% url 'detail' product.id %}" class="btn btn-dark btn-sm">
+            View Details
+          </a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div class="col-12 text-center">
+      <p>No products found in this collection.</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

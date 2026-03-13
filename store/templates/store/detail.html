@@ -1,0 +1,32 @@
+{% extends 'store/base.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'store/buynow.css' %}" />
+<div class="row">
+  <div class="col-md-6">
+    <img src="{{ product.image.url }}" width="100%" />
+  </div>
+
+  <div class="col-md-6">
+    <h2>{{ product.name }}</h2>
+    <h4>₹{{ product.price }}</h4>
+    <p>{{ product.description }}</p>
+
+    <form method="post" action="{% url 'add_to_cart' product.id %}">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="quantity" class="form-label">Quantity:</label>
+        <input
+          type="number"
+          id="quantity"
+          name="quantity"
+          value="1"
+          min="1"
+          class="form-control"
+          style="width: 100px; display: inline-block"
+        />
+      </div>
+      <button type="submit" class="btn btn-success">Add to Cart</button>
+      <a href="{% url 'order' %}" class="buy">Buy Now</a>
+    </form>
+  </div>
+</div>
+{% endblock %}

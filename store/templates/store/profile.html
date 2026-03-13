@@ -1,0 +1,45 @@
+{% extends 'store/base.html' %} {% load static %} {% block content %}
+<div class="profile-wrapper">
+  <!-- Profile header -->
+  <div class="profile-header">
+    <div class="profile-avatar">
+      {{ request.user.username|slice:":1"|upper }}
+    </div>
+    <div>
+      <h5 class="mb-0">{{ request.user.username }}</h5>
+      <small class="text-muted">Customer</small>
+    </div>
+  </div>
+
+  <!-- Orders section -->
+  <h6 class="section-title">Your Orders</h6>
+
+  <div class="orders-timeline">
+    {% for order in orders %}
+    <div class="order-item">
+      <div class="order-dot"></div>
+
+      <div class="order-content">
+        <div class="d-flex justify-content-between">
+          <span class="order-id">Order #{{ order.id }}</span>
+          <span class="order-date">{{ order.created_at|date:"d M Y" }}</span>
+        </div>
+
+        <div class="order-meta">
+          {{ order.items.count }} items · ₹{{ order.total_amount }}
+        </div>
+
+        <a class="order-link">View details →</a>
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-muted">No orders yet.</p>
+    {% endfor %}
+  </div>
+
+  <!-- Actions -->
+  <div class="profile-actions">
+    <a href="{% url 'logout' %}" class="btn btn-outline-dark btn-sm">Logout</a>
+  </div>
+</div>
+{% endblock %}

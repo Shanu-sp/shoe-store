@@ -1,0 +1,159 @@
+{% extends 'store/base.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'store/home.css'%}" />
+
+<div
+  id="shoeCarousel"
+  class="carousel slide mb-4"
+  data-bs-ride="carousel"
+  data-bs-interval="2000"
+>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img
+        src="{% static 'store/images/slider1.jpg' %}"
+        class="d-block w-100"
+        height="155"
+      />
+    </div>
+
+    <div class="carousel-item">
+      <img
+        src="{% static 'store/images/slider2.jpg' %}"
+        class="d-block w-100"
+        height="155"
+      />
+    </div>
+
+    <div class="carousel-item">
+      <img
+        src="{% static 'store/images/slider3.jpg' %}"
+        class="d-block w-100"
+        height="155"
+      />
+    </div>
+  </div>
+
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#shoeCarousel"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#shoeCarousel"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+
+<div class="container">
+  <div class="section-title mb-4">
+    <span class="line"></span>
+    <h3 class="shop-title">SHOP BY BRAND</h3>
+    <span class="line"></span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+  {% for b in brands %}
+  <div class="col-md-4">
+    <div class="card mb-4 shadow">
+      {% comment %}
+      <div class="brand-card">
+        <div class="brand-text">{{b.name}}</div>
+      </div>
+      {% endcomment %}
+
+      <img
+        src="{{ b.image.url }}"
+        class="card-img-top brand-img"
+        height="200"
+      />
+      <div class="card-body text-center">
+        <h5 class="br-name">{{ b.name }}</h5>
+        <a href="{% url 'brand_products' b.id %}" class="vw-shoe btn btn-dark">
+          View Shoes
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+  </div>
+</div>
+
+  <div class="container my-5">
+    <div class="section-title mb-4">
+      <span class="line"></span>
+      <h3 class="shop-title">SHOP BY COLLECTION</h3>
+      <span class="line"></span>
+    </div>
+    {% for b in brands %}
+
+    <!-- Brand Title -->
+    <div class="section-title mb-3 text-center">
+      <h3 class="text-uppercase">{{ b.name }}</h3>
+    </div>
+
+    <!-- Brand Row -->
+    <div class="row g-4 mb-5">
+      <!-- MEN -->
+      <div class="col-md-4 text-center">
+        <div class="brand-card p-4 shadow-sm">
+          <a
+            href="{% url 'collection' b.name|lower 'men' %}"
+            class="btn btn-sm mt-2 btn-link"
+          >
+            MEN
+          </a>
+        </div>
+      </div>
+
+      <!-- WOMEN -->
+      <div class="col-md-4 text-center">
+        <div class="brand-card p-4 shadow-sm">
+          {% comment %}
+          <h5>WOMEN</h5>
+          {% endcomment %} {% comment %}
+          <img
+            src="{% static 'store/images/women.jpg' %}"
+            class="img-fluid mb-2"
+          />
+          {% endcomment %}
+
+          <a
+            href="{% url 'collection' b.name|lower 'women' %}"
+            class="btn btn-sm mt-2 btn-link"
+          >
+            WOMEN
+          </a>
+        </div>
+      </div>
+
+      <!-- KIDS -->
+      <div class="col-md-4 text-center">
+        <div class="brand-card p-4 shadow-sm">
+          {% comment %}
+          <h5>KIDS</h5>
+          {% endcomment %}
+          <a
+            href="{% url 'collection' b.name|lower 'kids' %}"
+            class="btn btn-sm mt-2 btn-link"
+          >
+            KIDS
+          </a>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+  {% include 'store/footer.html' %} {% endblock %}
+</div>

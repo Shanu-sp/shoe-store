@@ -1,0 +1,25 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<link rel="stylesheet" href="/static/store/log.css" />
+
+<form class="login-form" method="POST">
+  {% csrf_token %}
+  <h1>Verify OTP</h1>
+
+  <input
+    type="text"
+    name="otp"
+    class="form-control mb-3 etremail"
+    placeholder="Enter OTP"
+  />
+
+  <button class="btn btn-success w-100 mb-2">Verify</button>
+
+  
+  <form method="post" action="{% url 'resend_otp' %}">
+    {% csrf_token %}
+    <button class="btn btn-link w-100 text-center">Resend OTP</button>
+  </form>
+</form>
+
+{% endblock %}
