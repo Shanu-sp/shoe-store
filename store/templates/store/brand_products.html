@@ -1,6 +1,8 @@
-{% extends 'store/base.html' %} {% block content %}
+{% extends 'store/base.html' %} {% block content %} {% load static %}
 
-<h3 class="mb-4">{{ brand.name }} PRODUCTS</h3>
+<link rel="stylesheet" href="{% static 'store/styles.css' %}" />
+
+<h3 class="mb-4 product-title">{{ brand.name }} PRODUCTS</h3>
 
 <div class="row">
   {% for p in products %}

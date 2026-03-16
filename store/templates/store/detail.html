@@ -1,11 +1,11 @@
 {% extends 'store/base.html' %} {% load static %} {% block content %}
 <link rel="stylesheet" href="{% static 'store/buynow.css' %}" />
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6 product-details">
     <img src="{{ product.image.url }}" width="100%" />
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-6 product-details">
     <h2>{{ product.name }}</h2>
     <h4>₹{{ product.price }}</h4>
     <p>{{ product.description }}</p>
