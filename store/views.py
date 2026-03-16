@@ -411,14 +411,18 @@ def profile(request):
     orders=Order.objects.filter(user=request.user).order_by('-created_at')
     return render(request,'store/profile.html',{'orders':orders})
 
-def collection(request,brand,category):
-    products = Product.objects.filter(brand__iexact=brand, category__iexact=category)
+def collection(request, brand, category):
+    products = Product.objects.filter(
+        brand__name__iexact=brand,
+        category__name__iexact=category
+    )
 
     context = {
         'brand': brand.capitalize(),
         'category': category.capitalize(),
         'products': products
     }
+
     return render(request, 'store/collection.html', context)
 
 
