@@ -1,41 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>A</title>
-  </head>
-  <body></body>
-</html>
 {% extends 'store/base.html' %} {% block content %}
+
 <h3 class="mb-4">{{ brand.name }} PRODUCTS</h3>
 
 <div class="row">
   {% for p in products %}
+
   <div class="col-md-3">
     <div class="card mb-4">
       <img src="{{ p.image.url }}" class="card-img-top" height="180" />
+
       <div class="card-body text-center">
-        <h6><a href="{% url 'detail' p.id %}" style="text-decoration: none; color: inherit;">{{ p.name }}</a></h6>
+        <h6>
+          <a
+            href="{% url 'detail' p.id %}"
+            style="text-decoration: none; color: inherit"
+          >
+            {{ p.name }}
+          </a>
+        </h6>
+
         <p>₹{{ p.price }}</p>
-        <form
-          method="post"
-          action="{% url 'add_to_cart' p.id %}"
-          style="display: inline"
-        >
+
+        <form method="post" action="{% url 'add_to_cart' p.id %}">
           {% csrf_token %}
           <input
             type="number"
             name="quantity"
             value="1"
             min="1"
-            style="width: 50px; margin-right: 5px"
+            style="width: 50px"
           />
           <button type="submit" class="btn btn-success btn-sm">
             Add to Cart
+          </button>
         </form>
       </div>
     </div>
   </div>
+
   {% endfor %}
 </div>
+
 {% endblock %}

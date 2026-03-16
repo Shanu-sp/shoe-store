@@ -18,33 +18,29 @@ class Brand(models.Model):
     def __str__(self):
         return self.name
 
-
-
 class Product(models.Model):
-    
-    BRAND_CHOICES = [
-        ('nike','Nike'),
-        ('adidas','Adidas'),
-        ('puma','Puma'),
-    ]
-    
-    CATEGORY_CHOICES = [
-        ('men','Men'),
-        ('women','Women'),
-        ('kids','Kids'),
-    ]
-    
-    
-    name=models.CharField(max_length=100)
-    brand = models.CharField(Brand , choices=BRAND_CHOICES ,max_length=100)
-    price=models.IntegerField()
-    description=models.TextField()
-    image=models.ImageField(upload_to='products/')
-    category=models.CharField(Category, choices=CATEGORY_CHOICES , max_length=100)
+
+    name = models.CharField(max_length=100)
+
+    brand = models.ForeignKey(
+        Brand,
+        on_delete=models.CASCADE
+    )
+
+    price = models.IntegerField()
+
+    description = models.TextField()
+
+    image = models.ImageField(upload_to='products/')
+
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return self.name
-
+    
 
 class EmailOTP(models.Model):
     email = models.EmailField()

@@ -65,7 +65,7 @@
 .brand-card {
     position: relative;
     height: 90px;
-    border-radius: 12px;
+    border-radius: 2px;
     overflow: hidden;
     background: #fff;
     display: flex;
@@ -106,7 +106,8 @@
 }
 
 .shadow-sm{
-    background-color: rgb(44, 43, 43);
+    background-color: rgb(12, 12, 12);
+   
 }
 
 .btn-link {
@@ -124,4 +125,16 @@
     font-weight: 600;
     font-size: 20px;
 }
+.w-100 {
+    width: 100%;
+    margin-top: 20px;
+    height: 400px;
+}
 
+
+
+.carousel-item img {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+}

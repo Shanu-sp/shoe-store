@@ -31,6 +31,9 @@ def product_detail(request,pk):
 def brand_products(request, brand_id):
     brand = Brand.objects.get(id=brand_id)   #  get selected brand
     products = Product.objects.filter(brand=brand)
+    
+    print("BRAND:", brand)
+    print("PRODUCTS:", products)
 
     return render(
         request,

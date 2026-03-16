@@ -1,8 +1,8 @@
 .custom-navbar {
-    background: rgba(9, 9, 9, 0.85);
+    background: black;
     backdrop-filter: blur(10px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    height: 70px;
+    height: 100px;
 }
 
 .navbar-brand {
@@ -104,4 +104,7 @@ body {
     height: 45px;
     align-items: center;
     font-size: x-large;
+}
+.text-primary {
+    color: #f5f5f5;
 }
